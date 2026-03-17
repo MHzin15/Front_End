@@ -1,24 +1,42 @@
+:root{
+    /*Paleta tipografica*/
+    --font-default: "Datatype", monospace;
+    --font-principal-title: "Archivo Black", sans-serif;
+    --font-principal-title-weight: 800;
+    --font-secondary-title: "Ubuntu", sans-serif;
+    --font-secondary-title-weight: 600;
+
+    /*Paleta de Cores*/
+    --color-primary: #333;
+    --color-bkg-figures:#F2EDED;
+    --color-border:#ccc; 
+}
+
 body {
-    color: #333333;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: var(--color-primary);
+    font-family: var(--font-default);
     margin-left: auto;
     margin-right: auto;
     width: 940px;
 }
 
 h1 {
+    font-family: var(--font-principal-title);
+    font-weight: 600;
     background-image: url(../img/sobre-background.jpg);
     padding: 10px;
 }
 
 h2 {
+    font-family: var(--font-secondary-title);
+    font-weight:800;
     border-bottom: 2px groove #333333;
     margin-top: 30px;
 }
 
 figure {
-    background-color: #F2EDED;
-    border: 1px solid #ccc;
+    background-color: var(--color-bkg-figures);
+    border: 1px solid var(--color-border);
     text-align: center;
     padding: 15px;
     margin: 30px;
