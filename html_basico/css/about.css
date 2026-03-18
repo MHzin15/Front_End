@@ -12,6 +12,10 @@
     --color-border:#ccc; 
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     color: var(--color-primary);
     font-family: var(--font-default);
@@ -50,4 +54,8 @@ figcaption {
 p {
  padding: 0 45px;
  text-indent: 15px;
+}
+
+a {
+ text-decoration: none;
 }
