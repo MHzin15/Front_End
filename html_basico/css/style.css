@@ -2,9 +2,24 @@ body{
     font-family: 'Times New Roman', Times, serif ;
 }
 
-h1{
+.font-titulos{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.titulo-principal {
     color: tan;
 }
-h2{
-    color:chocolate;
+
+.titulo-secundario{
+text-align: left;
+}
+.primeiro-titulo-secundario{
+    color:rgb(47, 34, 235);
+    font-style: italic;
+    font-size: 30px;
+}
+.segundo-titulo-secundario{
+    color: rgb(196, 0, 0);
+    font-style: italic;
+    font-size: 30px;
 }
