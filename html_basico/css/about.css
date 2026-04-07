@@ -1,107 +1,264 @@
-:root{
-    /*Paleta tipografica*/
-    --font-default: "Datatype", monospace;
+:root {
+    /* Design Tokens: Tipografia */
+    --font-default: "Datatype", system-ui, -apple-system, sans-serif;
     --font-principal-title: "Archivo Black", sans-serif;
-    --font-principal-title-weight: 800;
     --font-secondary-title: "Ubuntu", sans-serif;
-    --font-secondary-title-wgt: 900; 
-    --font-size-small: 0.8rem;
+    --font-size-small: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-h1: clamp(2.5rem, 6vw, 4rem); 
+    --font-size-h2: clamp(1.75rem, 4vw, 2.5rem);
 
-    /*Paleta de Cores*/
-    --color-primary: #333;
-    --color-bkg-figures:#F2EDED;
-    --color-border:#ccc; 
-    --color-base-footer: #777;
+    /* Design Tokens: Cores (Paleta modernizada) */
+    --color-primary: #1a1a1a; /* Preto mais suave para não cansar a vista */
+    --color-text-muted: #555;
+    --color-background: #FAFAFA;
+    --color-surface: #FFFFFF;
+    --color-border: #EAEAEA; 
+    --color-link: #2563EB; /* Azul moderno */
+    --color-link-hover: #1D4ED8;
 
-    /*Tamanhos de imagens*/
-    --logo-width: 94px;
+    /* Design Tokens: Layout */
+    --logo-width: 120px;
+    --container-max-width: 1024px;
 
-    /*Espaçamento*/
+    /* Design Tokens: Espaçamento */
     --space-1: 8px;
     --space-2: 16px;
     --space-3: 32px;
+    --space-4: 64px;
 
-    /*Border-radius*/
-    --border-width: 1px;
-    --border-radius: 4px;
+    /* Design Tokens: Estética Moderna (Bordas e Sombras) */
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================
+   BASE STYLES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     color: var(--color-primary);
     font-family: var(--font-default);
-    margin-left: auto;
-    margin-right: auto;
-    width: 940px;
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    background-color: var(--color-background);
 }
 
-h1 {
-    font-family: var(--font-principal-title);
-    font-weight: 600;
-    background-image: url(../img/sobre-background.jpg);
-    padding: 10px;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-h2 {
-    font-family: var(--font-secondary-title);
-    font-weight:800;
-    border-bottom: 2px groove #333333;
-    margin-top: 30px;
+/* Componente: Link Genérico */
+.link {
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+}
+.link:hover {
+    color: var(--color-link-hover);
+    text-decoration: underline;
 }
 
-figure {
-    background-color: var(--color-bkg-figures);
-    border: 1px solid var(--color-border);
-    text-align: center;
-    padding: 15px;
-    margin: 30px;
+/* =========================================
+   COMPONENTS (UI Patterns)
+   ========================================= */
+
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-2);
 }
 
-figcaption {
-    font-style: italic;
-    margin-top: 10px;
-}
-
-p {
- padding: 0 45px;
- margin: 45px;
- text-indent: 15px;
- text-align: justify;
-}
-
-a {
- text-decoration: none;
-}
-
-#centro-distribuicao {
-    margin-left: auto;
-    margin-right: auto;
-    width: 550px;
-}
-
-#familia-pelho {
-    margin: 0 0 10px 10px;
-    float: right;
-}
-
-    /*Componente Rodapé*/
-.rodape {
-    margin: var(--space-3) 0;
+/* Header */
+.header {
+    background-color: var(--color-surface);
     padding: var(--space-3) 0;
-    color: var(--color-base-footer);
-    border-top: var(--border-width) solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-    
+.header__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header__logo {
+    width: var(--logo-width);
+    transition: transform 0.2s ease;
+}
+.header__logo:hover {
+    transform: scale(1.05);
+}
+
+/* Hero (Banner com Título) - Agora com overlay escuro */
+.hero {
+    /* Gradiente escuro por cima da imagem garante legibilidade perfeita */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('../img/sobre-background.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px var(--space-2);
+    text-align: center;
+    margin-bottom: var(--space-4);
+}
+.hero__title {
+    font-family: var(--font-principal-title);
+    font-size: var(--font-size-h1);
+    color: #FFFFFF;
+    letter-spacing: -1px;
+}
+
+/* Content Section (Sessões de texto) */
+.content-section {
+    margin: var(--space-4) 0;
+}
+.content-section__title {
+    font-family: var(--font-secondary-title);
+    font-size: var(--font-size-h2);
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+    position: relative;
+    display: inline-block;
+}
+/* Sublinhado moderno animado no título */
+.content-section__title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-link);
+    border-radius: 2px;
+}
+.content-section__text {
+    margin-bottom: var(--space-2);
+    color: var(--color-text-muted);
+}
+
+/* Componente: Figure Card (Design moderno tipo Apple/Stripe) */
+.figure-card {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-2);
+    margin-bottom: var(--space-3);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+    border: 1px solid var(--color-border);
+}
+.figure-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+.figure-card__image-wrapper {
+    border-radius: var(--border-radius-sm);
+    overflow: hidden; /* Mantém as bordas arredondadas na imagem */
+}
+.figure-card__img {
+    margin: 0 auto;
+    transition: var(--transition-smooth);
+}
+.figure-card:hover .figure-card__img {
+    transform: scale(1.03); /* Efeito de zoom suave na foto ao passar o mouse */
+}
+.figure-card__caption {
+    font-style: normal;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-top: var(--space-2);
+    text-align: center;
+    font-size: var(--font-size-small);
+}
+
+/* Modificadores do Figure Card */
+.figure-card--centered {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.figure-card--float-right {
+    float: right;
+    margin: 0 0 var(--space-3) var(--space-3);
+    max-width: 45%;
+}
+
+/* Componente: Features Grid (Substitui a lista <ul> antiga) */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+}
+.feature-card {
+    background-color: var(--color-surface);
+    padding: var(--space-3);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-smooth);
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-link); /* Destaque sutil na borda */
+}
+.feature-card__title {
+    font-family: var(--font-secondary-title);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-1);
+}
+.feature-card__text {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-primary);
+    padding: var(--space-4) 0;
+    color: #FFFFFF;
+    margin-top: var(--space-4);
+}
 .footer__container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: var(--space-2);
-    justify-content: center;
 }
-
 .footer__logo {
     width: var(--logo-width);
+    filter: brightness(0) invert(1); /* Deixa a logo branca caso ela seja escura */
+}
+.footer__text {
+    font-size: var(--font-size-small);
+    opacity: 0.7;
 }
 
-.footer_text {
-    font-size: var(--font-size-small);
+/* =========================================
+   MEDIA QUERIES
+   ========================================= */
+@media (max-width: 768px) {
+    .figure-card--float-right {
+        float: none;
+        max-width: 100%;
+        margin: 0 auto var(--space-3);
+    }
+    
+    .hero {
+        padding: 60px var(--space-2);
+    }
 }
